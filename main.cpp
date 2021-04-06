@@ -26,7 +26,7 @@ int main(){
     auto evars=e.XYLW();
     int x=0,y=0;
     WINDOW*enemy_window=newwin(evars[3],COLS,0,0);
-    WINDOW*bar_window=newwin(1,COLS,LINES-1,0);
+    WINDOW*bar_window=newwin(1,COLS,LINES-10,0);
     bool dir=true;
     init_pair(1, COLOR_BLACK, COLOR_WHITE);
     init_pair(2, COLOR_RED, COLOR_BLACK);
@@ -34,6 +34,7 @@ int main(){
     wattron(enemy_window, COLOR_PAIR(2));
     int stren=std::rand();
     for (int i2=0;true;i2++){
+        N=1;
         if (dir){
             x+=1;
         }else{
