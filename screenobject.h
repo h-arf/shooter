@@ -1,9 +1,8 @@
+#pragma once
 #include "includes.h"
-class ScreenObject
+class ScreenObject//do not dervive from here just a protocol(for now)
 {
 public:
-    ScreenObject(/* args */);
-    ~ScreenObject();
     virtual std::vector<std::string> Disp();
     virtual std::vector<int> XYLW();
 };

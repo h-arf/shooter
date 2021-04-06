@@ -1,9 +1,10 @@
 #include "enemy.h"
 #include "includes.h"
 vector<string> Enemy::Disp(){
-    return {
+vector<string> r={
         "    ^ ^    ",
         " <<  ^  >> ",
         "<  << >>  >",
     };
+    return r;
 }
