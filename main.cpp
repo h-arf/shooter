@@ -32,6 +32,7 @@ int main(){
         wrefresh(enemy_window);
         refresh();
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        wclear(enemy_window);
     }
     endwin();
 }
