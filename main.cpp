@@ -47,7 +47,7 @@ int main(){
             y++;
         }
         stren=std::rand()%ncols;
-        for (int count=0;count<=ncols;count++){
+        for (int count=0;count<=6;count++){
             wattron(bar_window,COLOR_PAIR(N));
             mvwprintw(bar_window,0,count*ncols,bar.c_str());
             if (N==1){
@@ -62,6 +62,7 @@ int main(){
         refresh();
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         wclear(enemy_window);
+        wclear(bar_window);
     }
     endwin();
 }
