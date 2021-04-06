@@ -26,6 +26,7 @@ int main(){
     auto evars=e.XYLW();
     int x=0,y=0;
     WINDOW*enemy_window=newwin(evars[3],COLS,0,0);
+    WINDOW*bar_window=newwin(1,COLS,LINES,0);
     bool dir=true;
     init_pair(1, COLOR_BLACK, COLOR_WHITE);
     init_pair(2, COLOR_RED, COLOR_BLACK);
@@ -47,8 +48,8 @@ int main(){
         }
         stren=(stren)|(i2+1)&(i2/2)%6;
         for (int count=0;count<ncols;count++){
-            attron(COLOR_PAIR(N));
-            mvprintw(LINES,count*ncols,bar.c_str());
+            wattron(bar_window,COLOR_PAIR(N));
+            mvwprintw(bar_window,0,count*ncols,bar.c_str());
             if (N==1){
                 N=2;
             }else{
@@ -57,8 +58,9 @@ int main(){
         }
         attron(COLOR_PAIR(N));
         wrefresh(enemy_window);
+        wrefresh(bar_window);
         refresh();
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         wclear(enemy_window);
     }
     endwin();
