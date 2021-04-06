@@ -26,7 +26,7 @@ int main(){
     auto evars=e.XYLW();
     int x=0,y=0;
     WINDOW*enemy_window=newwin(evars[3],COLS,0,0);
-    WINDOW*bar_window=newwin(1,COLS,LINES-10,0);
+    WINDOW*bar_window=newwin(1,COLS,LINES-1,0);
     bool dir=true;
     init_pair(1, COLOR_BLACK, COLOR_WHITE);
     init_pair(2, COLOR_RED, COLOR_BLACK);
@@ -40,15 +40,16 @@ int main(){
         }else{
             x-=1;
         }
-        if (x>=50||x<=0){
+        if (x+evars[3]+1>=COLS-1||x<=0){
             dir=!dir;
         }
         for (auto i:e.Disp()){
-            mvwprintw(enemy_window,y,x,i.c_str());
+            mvprintw(y,x,i.c_str());
             y++;
         }
+        y=0;
         stren=std::rand()%ncols;
-        for (int count=0;count<=6;count++){
+        for (int count=0;count<=stren;count++){
             wattron(bar_window,COLOR_PAIR(N));
             mvwprintw(bar_window,0,count*ncols,bar.c_str());
             if (N==1){
@@ -61,7 +62,7 @@ int main(){
         wrefresh(enemy_window);
         wrefresh(bar_window);
         refresh();
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         wclear(enemy_window);
         wclear(bar_window);
     }

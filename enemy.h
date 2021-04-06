@@ -9,5 +9,5 @@ private:
 public:
     std::vector<std::string> Disp();
     Enemy(){}
-     std::vector<int> XYLW() {return {x,0,7,3};};
+     std::vector<int> XYLW() {return {x,0,3,7};};
 };
